@@ -165,7 +165,7 @@
   .signal i{display:block; width:5px; background:var(--border-soft); border-radius:1px;}
   .signal i:nth-child(1){height:6px;} .signal i:nth-child(2){height:10px;}
   .signal i:nth-child(3){height:14px;} .signal i:nth-child(4){height:18px;} .signal i:nth-child(5){height:22px;}
-  .signal.fill3 i:nth-child(1+3){background:var(--teal);}
+  .signal.fill3 i:nth-child(1){background:var(--teal);}
   .signal.fill5 i{background:var(--teal);}
 
   /* ---- contact ---- */
@@ -192,10 +192,9 @@
   <div class="hero">
     <div class="hero-inner">
       <div class="hero-main">
-        <div class="avatar"><span class="ic">＋</span>miejsce<br>na zdjęcie</div>
         <div>
           <div class="eyebrow">Curriculum Vitae</div>
-          <h1 class="placeholder">Imię Nazwisko</h1>
+          <h1 class="placeholder">Łukasz Chwastyk</h1>
           <div class="role">Uczeń klasy 4. Technikum nr 7 (ZSTiE Wrocław), kierunek technik informatyk o specjalizacji sieciowej. Od kilku lat samodzielnie buduję i utrzymuję domową infrastrukturę serwerową, a obecnie rozwijam się także w tworzeniu aplikacji internetowych. Lubię rozwiązywać problemy techniczne po swojemu, gdy gotowe rozwiązanie nie do końca pasuje.</div>
         </div>
       </div>
@@ -417,25 +416,6 @@
     </div>
   </div>
 
-  <!-- CONTACT -->
-  <div class="panel">
-    <div class="panel-head"><span class="tag">07</span><h2>Kontakt</h2></div>
-    <div class="contact-grid">
-      <div class="contact-item"><div class="k">e-mail</div><div class="v placeholder">Lukasz.chwastyk09@gmail.com</div></div>
-      <div class="contact-item"><div class="k">telefon</div><div class="v placeholder">+48 733 171 279</div></div>
-      <div class="contact-item"><div class="k">szkoła</div><div class="v">ZSTiE, ul. H. Bosaka 21, Wrocław</div></div>
-      <div class="contact-item"><div class="k">github / portfolio</div><div class="v placeholder">github.com/Lukasz-Ch</div></div>
-    </div>
-  </div>
-
-  <!-- RODO -->
-  <div class="panel">
-    <div class="panel-head"><span class="tag">08</span><h2>Klauzula RODO</h2></div>
-    <p class="rodo-text">Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w niniejszym dokumencie dla potrzeb niezbędnych do realizacji procesu rekrutacji, zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO).</p>
-  </div>
-
-  <footer>dokument przygotowany do praktyk zawodowych — technik informatyk 351203</footer>
-</div>
 
 <script>
   document.getElementById('genDate').textContent = new Date().toLocaleDateString('pl-PL');
