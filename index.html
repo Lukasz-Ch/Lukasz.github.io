@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Technik Informatyk / Sieciowiec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0B0E14;
+    --panel:#12161F;
+    --panel-alt:#161B26;
+    --border:#232A3A;
+    --border-soft:#1B2130;
+    --text:#E7EAF0;
+    --muted:#8A93A6;
+    --dim:#59647A;
+    --teal:#4BB8AC;
+    --teal-soft:#2A5551;
+    --amber:#D99A4E;
+    --amber-soft:#5A4527;
+    --violet:#8D82C9;
+    --mono:'JetBrains Mono', monospace;
+    --sans:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 10% -10%, rgba(75,184,172,0.045), transparent),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(141,130,201,0.035), transparent),
+      var(--void);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.55;
+    padding:32px 20px 70px;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto;}
+  a{color:var(--teal); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  ::selection{background:var(--teal-soft); color:var(--text);}
+
+  /* ---- top bar ---- */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:10.5px; color:var(--dim);
+    letter-spacing:0.05em; text-transform:uppercase;
+    padding-bottom:14px; border-bottom:1px solid var(--border-soft);
+    margin-bottom:24px; flex-wrap:wrap; gap:8px;
+  }
+  .topbar .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); display:inline-block; margin-right:7px;}
+
+  /* ---- hero ---- */
+  .hero{
+    background:linear-gradient(150deg, var(--panel), var(--panel-alt));
+    border:1px solid var(--border); border-radius:14px;
+    padding:34px 34px; margin-bottom:18px; position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(75,184,172,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(75,184,172,0.02) 1px, transparent 1px);
+    background-size:28px 28px; pointer-events:none;
+  }
+  .hero-inner{position:relative; z-index:1; display:flex; justify-content:space-between; gap:26px; flex-wrap:wrap; align-items:flex-start;}
+  .hero-main{display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap;}
+  .avatar{
+    width:100px; height:100px; border-radius:14px; flex-shrink:0;
+    border:1.5px dashed var(--border); background:rgba(0,0,0,0.15);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:var(--dim); font-family:var(--mono); font-size:9px; letter-spacing:0.04em;
+    text-align:center; gap:5px; line-height:1.4;
+  }
+  .avatar .ic{font-size:20px; color:var(--border);}
+  .eyebrow{font-family:var(--mono); font-size:11px; color:var(--teal); letter-spacing:0.13em; text-transform:uppercase; margin-bottom:9px;}
+  h1{font-family:var(--sans); font-weight:800; font-size:clamp(26px,4vw,36px); letter-spacing:-0.01em; color:var(--text);}
+  .role{font-size:14.5px; color:var(--muted); margin-top:9px; max-width:480px;}
+  .status-card{
+    font-family:var(--mono); font-size:11.5px; background:rgba(0,0,0,0.2);
+    border:1px solid var(--border); border-radius:10px; padding:15px 18px;
+    min-width:210px;
+  }
+  .status-card .row{display:flex; justify-content:space-between; gap:14px; padding:3.5px 0; color:var(--muted);}
+  .status-card .row span:last-child{color:var(--teal); font-weight:600; text-align:right;}
+  .status-card .divider{height:1px; background:var(--border-soft); margin:8px 0;}
+
+  /* ---- section shell ---- */
+  .panel{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:26px 30px; margin-bottom:16px;
+  }
+  .panel-head{display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  .panel-head .tag{font-family:var(--mono); font-size:10px; color:var(--dim); border:1px solid var(--border-soft); border-radius:5px; padding:2px 7px;}
+  .panel-head h2{font-family:var(--sans); font-size:15px; letter-spacing:0.01em; color:var(--text); font-weight:700;}
+  .panel-head::after{content:""; flex:1; height:1px; background:var(--border-soft);}
+  .panel-sub{font-size:12.5px; color:var(--dim); margin:2px 0 18px;}
+
+  /* ---- competency rows (skills, plain-language) ---- */
+  .competency{padding:15px 0; border-bottom:1px solid var(--border-soft);}
+  .competency:last-child{border-bottom:none; padding-bottom:0;}
+  .competency:first-child{padding-top:2px;}
+  .comp-top{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:5px;}
+  .comp-name{font-weight:700; font-size:14.5px; display:flex; align-items:center; gap:9px;}
+  .comp-name .dotstat{width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0;}
+  .comp-name .dotstat.warm{background:var(--amber);}
+  .comp-level{font-family:var(--mono); font-size:10px; color:var(--dim); white-space:nowrap;}
+  .comp-desc{font-size:13px; color:var(--muted); line-height:1.6; max-width:640px;}
+  .comp-bar{height:4px; background:var(--border-soft); border-radius:3px; overflow:hidden; margin-top:9px; max-width:220px;}
+  .comp-bar > i{display:block; height:100%; background:var(--teal);}
+  .comp-bar.warm > i{background:var(--amber);}
+
+  /* ---- two column grid ---- */
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:800px){ .grid2{grid-template-columns:1fr;} }
+
+  /* ---- log / timeline (education) ---- */
+  .log{border-left:2px solid var(--border-soft); margin-left:5px;}
+  .log-entry{position:relative; padding:2px 0 20px 24px;}
+  .log-entry:last-child{padding-bottom:0;}
+  .log-entry::before{content:""; position:absolute; left:-6.5px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--void); border:2px solid var(--teal);}
+  .log-time{font-family:var(--mono); font-size:10px; color:var(--teal); letter-spacing:0.05em;}
+  .log-title{font-weight:700; font-size:14.5px; margin:3px 0 4px;}
+  .log-desc{font-size:12.5px; color:var(--muted); max-width:680px;}
+
+  /* ---- chips ---- */
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:var(--mono); font-size:11.5px; padding:7px 12px; border-radius:8px;
+    background:var(--panel-alt); border:1px solid var(--border); color:var(--text);
+    display:flex; align-items:center; gap:7px;
+  }
+  .chip .ico{color:var(--teal); font-weight:800;}
+  .chip.warm{border-color:var(--amber-soft);}
+  .chip.warm .ico{color:var(--amber);}
+  .roadmap-label{
+    font-family:var(--mono); font-size:10px; color:var(--dim); text-transform:uppercase;
+    letter-spacing:0.1em; margin:16px 0 10px; padding-top:14px; border-top:1px solid var(--border-soft);
+  }
+
+  /* ---- network diagram ---- */
+  .lab-grid{display:grid; grid-template-columns:1fr 1.1fr; gap:22px; align-items:start;}
+  @media (max-width:800px){ .lab-grid{grid-template-columns:1fr;} }
+  .lab-text p{font-size:13px; color:var(--muted); margin-bottom:12px; max-width:520px;}
+  .lab-text .highlight{
+    background:var(--panel-alt); border:1px solid var(--border-soft); border-radius:9px;
+    padding:12px 14px; margin-top:14px;
+  }
+  .lab-text .highlight .k{font-family:var(--mono); font-size:9.5px; color:var(--violet); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:5px;}
+  .lab-text .highlight .v{font-size:12.5px; color:var(--muted);}
+  .diagram-wrap{background:var(--panel-alt); border:1px solid var(--border-soft); border-radius:10px; padding:14px;}
+  .diagram-caption{font-family:var(--mono); font-size:10px; color:var(--dim); margin-top:10px; text-align:center;}
+  .node-label{fill:var(--text); font-family:var(--mono); font-size:9px;}
+  .node-sub{fill:var(--muted); font-family:var(--mono); font-size:7.5px;}
+
+  /* ---- languages ---- */
+  .lang-row{display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border-soft);}
+  .lang-row:last-child{border-bottom:none;}
+  .lang-name{font-weight:600; font-size:13.5px;}
+  .lang-name small{display:block; color:var(--muted); font-weight:400; font-size:11px; margin-top:1px;}
+  .signal{display:flex; gap:3px; align-items:flex-end;}
+  .signal i{display:block; width:5px; background:var(--border-soft); border-radius:1px;}
+  .signal i:nth-child(1){height:6px;} .signal i:nth-child(2){height:10px;}
+  .signal i:nth-child(3){height:14px;} .signal i:nth-child(4){height:18px;} .signal i:nth-child(5){height:22px;}
+  .signal.fill3 i:nth-child(3){background:var(--teal);}
+  .signal.fill5 i{background:var(--teal);}
+
+  /* ---- contact ---- */
+  .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;}
+  .contact-item{font-family:var(--mono); font-size:12.5px;}
+  .contact-item .k{color:var(--dim); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;}
+  .contact-item .v{color:var(--text);}
+
+  .rodo-text{font-family:var(--mono); font-size:11px; line-height:1.7; color:var(--dim);}
+
+  footer{text-align:center; font-family:var(--mono); font-size:10px; color:var(--dim); margin-top:24px;}
+  .placeholder{color:var(--amber); border-bottom:1px dashed var(--amber-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div><span class="dot"></span>ZSTiE Wrocław &nbsp;·&nbsp; technik informatyk 351203 &nbsp;·&nbsp; specjalizacja sieciowa</div>
+    <div>aktualizacja: <span id="genDate"></span></div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <div class="avatar"><span class="ic">＋</span>miejsce<br>na zdjęcie</div>
+        <div>
+          <div class="eyebrow">Curriculum Vitae</div>
+          <h1 class="placeholder">Imię Nazwisko</h1>
+          <div class="role">Uczeń klasy 3. Technikum nr 7 (ZSTiE Wrocław), kierunek technik informatyk o specjalizacji sieciowej. Od kilku lat samodzielnie buduję i utrzymuję domową infrastrukturę serwerową, a obecnie rozwijam się także w tworzeniu aplikacji internetowych. Lubię rozwiązywać problemy techniczne po swojemu, gdy gotowe rozwiązanie nie do końca pasuje.</div>
+        </div>
+      </div>
+      <div class="status-card">
+        <div class="row"><span>Cel</span><span>Praktyka zawodowa</span></div>
+        <div class="row"><span>Wymiar</span><span>140h / 4 tyg.</span></div>
+        <div class="divider"></div>
+        <div class="row"><span>Klasa</span><span>4C</span></div>
+        <div class="row"><span>Lokalizacja</span><span>Wrocław</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPETENCIES -->
+  <div class="panel">
+    <div class="panel-head"><span class="tag">01</span><h2>Kompetencje</h2></div>
+    <div class="panel-sub">Krótkie wyjaśnienie, co potrafię — również dla osób spoza branży IT.</div>
+
+    <div class="competency">
+      <div class="comp-top">
+        <div class="comp-name"><span class="dotstat"></span>Sieci komputerowe (CCNA)</div>
+        <div class="comp-level">poziom zaawansowany</div>
+      </div>
+      <div class="comp-desc">Potrafię zaprojektować, podłączyć i skonfigurować sieć komputerową tak, aby internet i połączenia między urządzeniami działały szybko, stabilnie i bezpiecznie — w tym zabezpieczyć ją przed nieautoryzowanym dostępem oraz podzielić na oddzielne, izolowane strefy.</div>
+      <div class="comp-bar"><i style="width:85%"></i></div>
+    </div>
+
+    <div class="competency">
+      <div class="comp-top">
+        <div class="comp-name"><span class="dotstat"></span>Administracja serwerami i wirtualizacja</div>
+        <div class="comp-level">poziom zaawansowany</div>
+      </div>
+      <div class="comp-desc">Zarządzam serwerami, na których jeden fizyczny komputer uruchamia jednocześnie kilka niezależnych „wirtualnych komputerów" (maszyn wirtualnych) — dzięki temu sprzęt jest lepiej wykorzystany, a usługi łatwiej odizolować, zabezpieczyć i przywrócić z kopii zapasowej w razie awarii.</div>
+      <div class="comp-bar"><i style="width:80%"></i></div>
+    </div>
+
+    <div class="competency">
+      <div class="comp-top">
+        <div class="comp-name"><span class="dotstat"></span>Systemy Linux</div>
+        <div class="comp-level">poziom zaawansowany</div>
+      </div>
+      <div class="comp-desc">Swobodnie poruszam się w większości popularnych dystrybucji Linuksa (Debian, Ubuntu, Linux Mint, Arch, Gentoo) — od codziennej obsługi po zaawansowaną konfigurację systemu i kompilację oprogramowania ze źródeł.</div>
+      <div class="comp-bar"><i style="width:82%"></i></div>
+    </div>
+
+    <div class="competency">
+      <div class="comp-top">
+        <div class="comp-name"><span class="dotstat"></span>Tworzenie stron i aplikacji internetowych</div>
+        <div class="comp-level">poziom średnio-zaawansowany</div>
+      </div>
+      <div class="comp-desc">Buduję strony internetowe od podstaw — zarówno warstwę wizualną, czyli to, jak strona wygląda i reaguje na działania użytkownika (HTML, CSS, JavaScript), jak i bazy danych, w których przechowywane są informacje, np. konta użytkowników czy treści strony (SQL).</div>
+      <div class="comp-bar"><i style="width:65%"></i></div>
+    </div>
+
+    <div class="competency">
+      <div class="comp-top">
+        <div class="comp-name"><span class="dotstat warm"></span>Programowanie po stronie serwera (PHP)</div>
+        <div class="comp-level">w trakcie nauki</div>
+      </div>
+      <div class="comp-desc">Uczę się pisać logikę działającą po stronie serwera, czyli tę część aplikacji internetowej, która np. sprawdza dane logowania czy zapisuje formularz do bazy danych.</div>
+      <div class="comp-bar warm"><i style="width:35%"></i></div>
+    </div>
+
+    <div class="competency">
+      <div class="comp-top">
+        <div class="comp-name"><span class="dotstat"></span>Samodzielne rozwiązywanie problemów technicznych</div>
+        <div class="comp-level">mocna strona</div>
+      </div>
+      <div class="comp-desc">Gdy gotowe rozwiązanie nie istnieje, jest zbyt drogie albo po prostu nie pasuje do sytuacji, projektuję własne — łącząc, adaptując lub przerabiając dostępne komponenty, zamiast rezygnować z pomysłu. Takie podejście wypracowałem, rozwijając własne domowe laboratorium (patrz niżej).</div>
+      <div class="comp-bar"><i style="width:88%"></i></div>
+    </div>
+  </div>
+
+  <!-- HOME LAB PROJECT -->
+  <div class="panel">
+    <div class="panel-head"><span class="tag">02</span><h2>Projekt własny — domowe laboratorium serwerowo-sieciowe</h2></div>
+    <div class="lab-grid">
+      <div class="lab-text">
+        <p>Od kilku lat samodzielnie projektuję, rozbudowuję i utrzymuję domową infrastrukturę serwerową i sieciową. To dla mnie główne miejsce nauki: wdrażam tu rozwiązania, zanim jeszcze poznam je w szkole, i uczę się na własnych błędach w bezpiecznym środowisku.</p>
+        <p>Infrastruktura obejmuje trzy serwery fizyczne (dwa w klastrze Proxmox VE z usługami NAS i maszynami wirtualnymi, jeden dedykowany pod dodatkowe maszyny wirtualne oraz zdalną kompilację oprogramowania dla laptopa z Linuksem), zarządzany przełącznik Cisco oraz redundantne łącze internetowe — dwa niezależne łącza WAN i dwie sieci LAN z automatycznym przełączaniem awaryjnym, dzięki czemu awaria jednego dostawcy internetu nie odcina sieci od świata.</p>
+        <div class="highlight">
+          <div class="k">nieszablonowe podejście</div>
+          <div class="v">Kiedy standardowe komponenty nie wystarczają — np. serwer ma za mało złączy dyskowych na potrzeby pamięci masowej — projektuję własne rozwiązanie: dobieram i łączę ze sobą komponenty z różnych urządzeń (np. karty kontrolerów, przejściówki) i w razie potrzeby przygotowuję dedykowaną obudowę, zamiast poprzestawać na gotowych, droższych zestawach.</div>
+        </div>
+      </div>
+      <div>
+        <div class="diagram-wrap">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+            <rect x="10" y="10" width="70" height="26" rx="5" fill="none" stroke="#5A4527" stroke-width="1.4"/>
+            <text x="45" y="27" text-anchor="middle" class="node-label" fill="#D99A4E">WAN 1</text>
+            <rect x="240" y="10" width="70" height="26" rx="5" fill="none" stroke="#5A4527" stroke-width="1.4"/>
+            <text x="275" y="27" text-anchor="middle" class="node-label" fill="#D99A4E">WAN 2</text>
+
+            <rect x="110" y="58" width="100" height="30" rx="6" fill="#161B26" stroke="#4BB8AC" stroke-width="1.6"/>
+            <text x="160" y="77" text-anchor="middle" class="node-label">ROUTER / FW</text>
+
+            <line x1="45" y1="36" x2="140" y2="58" stroke="#232A3A" stroke-width="1.4"/>
+            <line x1="275" y1="36" x2="180" y2="58" stroke="#232A3A" stroke-width="1.4"/>
+
+            <line x1="160" y1="88" x2="160" y2="112" stroke="#232A3A" stroke-width="1.4"/>
+            <rect x="110" y="112" width="100" height="26" rx="5" fill="none" stroke="#232A3A" stroke-width="1.4"/>
+            <text x="160" y="129" text-anchor="middle" class="node-sub" fill="#8A93A6">LAN 1 · LAN 2 (backup)</text>
+
+            <line x1="160" y1="138" x2="160" y2="160" stroke="#232A3A" stroke-width="1.4"/>
+            <rect x="95" y="160" width="130" height="26" rx="5" fill="#161B26" stroke="#8D82C9" stroke-width="1.6"/>
+            <text x="160" y="177" text-anchor="middle" class="node-label" fill="#8D82C9">SWITCH (Cisco)</text>
+
+            <line x1="130" y1="186" x2="60" y2="215" stroke="#232A3A" stroke-width="1.2"/>
+            <line x1="160" y1="186" x2="160" y2="215" stroke="#232A3A" stroke-width="1.2"/>
+            <line x1="190" y1="186" x2="260" y2="215" stroke="#232A3A" stroke-width="1.2"/>
+
+            <rect x="15" y="215" width="90" height="34" rx="5" fill="#0F1420" stroke="#4BB8AC" stroke-width="1.3"/>
+            <text x="60" y="230" text-anchor="middle" class="node-label">PROXMOX × 2</text>
+            <text x="60" y="242" text-anchor="middle" class="node-sub">NAS + usługi VM</text>
+
+            <rect x="115" y="215" width="90" height="34" rx="5" fill="#0F1420" stroke="#4BB8AC" stroke-width="1.3"/>
+            <text x="160" y="230" text-anchor="middle" class="node-label">SERWER VM</text>
+            <text x="160" y="242" text-anchor="middle" class="node-sub">maszyny wirtualne</text>
+
+            <rect x="215" y="215" width="90" height="34" rx="5" fill="#0F1420" stroke="#4BB8AC" stroke-width="1.3"/>
+            <text x="260" y="230" text-anchor="middle" class="node-label">COMPILE SRV</text>
+            <text x="260" y="242" text-anchor="middle" class="node-sub">offsite dla Linuksa</text>
+
+            <line x1="160" y1="186" x2="160" y2="270" stroke="#232A3A" stroke-width="1" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="45" y="278" width="46" height="24" rx="4" fill="none" stroke="#232A3A" stroke-width="1.2"/>
+              <rect x="105" y="278" width="46" height="24" rx="4" fill="none" stroke="#232A3A" stroke-width="1.2"/>
+              <rect x="165" y="278" width="46" height="24" rx="4" fill="none" stroke="#232A3A" stroke-width="1.2"/>
+              <rect x="225" y="278" width="46" height="24" rx="4" fill="none" stroke="#232A3A" stroke-width="1.2"/>
+              <text x="158" y="315" text-anchor="middle" class="node-sub" fill="#59647A">4× urządzenia końcowe</text>
+            </g>
+          </svg>
+        </div>
+        <div class="diagram-caption">topologia domowego laboratorium sieciowego</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="panel">
+    <div class="panel-head"><span class="tag">03</span><h2>Stos technologiczny</h2></div>
+    <div class="panel-sub">Narzędzia i technologie, z których korzystałem przy powyższych projektach.</div>
+    <div class="chips">
+      <div class="chip"><span class="ico">›</span> Linux — Debian / Ubuntu / Mint / Arch / Gentoo</div>
+      <div class="chip"><span class="ico">›</span> Proxmox VE</div>
+      <div class="chip"><span class="ico">›</span> Windows Server</div>
+      <div class="chip"><span class="ico">›</span> Docker</div>
+      <div class="chip"><span class="ico">›</span> pfSense / OPNsense</div>
+      <div class="chip"><span class="ico">›</span> Cisco Packet Tracer</div>
+      <div class="chip"><span class="ico">›</span> Wireshark</div>
+      <div class="chip"><span class="ico">›</span> MySQL / MariaDB</div>
+      <div class="chip"><span class="ico">›</span> Apache / Nginx</div>
+      <div class="chip"><span class="ico">›</span> DNS / DHCP / VLAN</div>
+      <div class="chip"><span class="ico">›</span> WireGuard / OpenVPN</div>
+      <div class="chip"><span class="ico">›</span> Bash / PowerShell</div>
+      <div class="chip"><span class="ico">›</span> Git / GitHub</div>
+      <div class="chip"><span class="ico">›</span> ZFS / RAID i kopie zapasowe</div>
+      <div class="chip"><span class="ico">›</span> VS Code</div>
+    </div>
+    <div class="roadmap-label">w trakcie nauki</div>
+    <div class="chips">
+      <div class="chip warm"><span class="ico">↻</span> PHP</div>
+      <div class="chip warm"><span class="ico">↻</span> Aplikacje po stronie serwera</div>
+    </div>
+  </div>
+
+  <!-- EDUCATION LOG -->
+  <div class="panel">
+    <div class="panel-head"><span class="tag">04</span><h2>Edukacja i osiągnięcia</h2></div>
+    <div class="log">
+      <div class="log-entry">
+        <div class="log-time">OBECNIE</div>
+        <div class="log-title">Technikum nr 7, ZSTiE Wrocław — technik informatyk (351203)</div>
+        <div class="log-desc">Klasa 7TI. Profil: sieci komputerowe oraz aplikacje internetowe. Poszukuję 4-tygodniowej praktyki zawodowej (140h) zgodnej z programem szkolnym.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">UKOŃCZONO</div>
+        <div class="log-title">CCNA — Cisco Networking Academy</div>
+        <div class="log-desc">Certyfikat CCNA oraz większość bezpłatnych kursów oferowanych przez Cisco (routing, przełączanie, bezpieczeństwo sieci).</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">PROJEKT WŁASNY</div>
+        <div class="log-title">Domowe laboratorium sieciowo-serwerowe</div>
+        <div class="log-desc">Opis projektu i zastosowane rozwiązania — patrz sekcja 02 powyżej.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTS + LANGUAGES -->
+  <div class="grid2">
+    <div class="panel">
+      <div class="panel-head"><span class="tag">05</span><h2>Certyfikaty</h2></div>
+      <div class="chips">
+        <div class="chip"><span class="ico">✓</span> CCNA — Cisco</div>
+        <div class="chip"><span class="ico">✓</span> Cisco Networking Academy — kursy bezpłatne</div>
+        <div class="chip"><span class="ico">✓</span> INF 02 - Technik informatyk (*świeżo ukończony - wyniki dodam po wakacjach*)</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><span class="tag">06</span><h2>Języki</h2></div>
+      <div class="lang-row">
+        <span class="lang-name">Angielski <small>poziom zbliżony do native + słownictwo branżowe IT</small></span>
+        <span class="signal fill5"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">Niemiecki <small>poziom podstawowy</small></span>
+        <span class="signal fill3"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">Polski <small>ojczysty</small></span>
+        <span class="signal fill5"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="panel">
+    <div class="panel-head"><span class="tag">07</span><h2>Kontakt</h2></div>
+    <div class="contact-grid">
+      <div class="contact-item"><div class="k">e-mail</div><div class="v placeholder">Lukasz.chwastyk09@gmail.com</div></div>
+      <div class="contact-item"><div class="k">telefon</div><div class="v placeholder">+48 733 171 279</div></div>
+      <div class="contact-item"><div class="k">szkoła</div><div class="v">ZSTiE, ul. H. Bosaka 21, Wrocław</div></div>
+      <div class="contact-item"><div class="k">github / portfolio</div><div class="v placeholder">github.com/Lukasz-Ch</div></div>
+    </div>
+  </div>
+
+  <!-- RODO -->
+  <div class="panel">
+    <div class="panel-head"><span class="tag">08</span><h2>Klauzula RODO</h2></div>
+    <p class="rodo-text">Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w niniejszym dokumencie dla potrzeb niezbędnych do realizacji procesu rekrutacji, zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO).</p>
+  </div>
+
+  <footer>dokument przygotowany do praktyk zawodowych — technik informatyk 351203</footer>
+</div>
+
+<script>
+  document.getElementById('genDate').textContent = new Date().toLocaleDateString('pl-PL');
+</script>
+</body>
+</html>
